@@ -1,0 +1,17 @@
+$background-color-1-header: #02031a;
+$background-color-2-header: #b10c43;
+$color-text-header: #ebdfcc;
+
+.header {
+  .toolbar {
+    background-image: linear-gradient(
+      to right,
+      $background-color-1-header,
+      $background-color-2-header
+    );
+    &__title {
+      color: $color-text-header;
+      text-transform: uppercase;
+    }
+  }
+}
