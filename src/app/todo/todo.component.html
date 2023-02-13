@@ -1,0 +1,146 @@
+<main class="main">
+  <section class="container-fluid">
+    <div class="row">
+      <div class="col-md-3">
+        <mat-card class="mat-card">
+          <form [formGroup]="todoForm">
+            <mat-form-field appearance="outline">
+              <mat-label> Digite sua tarefa </mat-label>
+              <input formControlName="item" matInput placeholder="Tarefa" />
+              <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+              <mat-hint>Adicione sua tarefa</mat-hint>
+            </mat-form-field>
+            <button
+              *ngIf="!isEditEnabled"
+              (click)="addTask()"
+              mat-raised-button
+              [disabled]="todoForm.invalid"
+            >
+              Add
+            </button>
+            <button
+              *ngIf="isEditEnabled"
+              (click)="updateTask()"
+              mat-raised-button
+              [disabled]="todoForm.invalid"
+            >
+              Update
+            </button>
+          </form>
+        </mat-card>
+      </div>
+      <div class="col-md-9">
+        <div cdkDropListGroup>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="tasks">
+                <h2 class="tasks__title">
+                  To do
+                  <span *ngIf="tasks.length > 0"> - {{ tasks.length }}</span>
+                </h2>
+
+                <div
+                  cdkDropList
+                  [cdkDropListData]="tasks"
+                  class="tasks__list"
+                  (cdkDropListDropped)="drop($event)"
+                >
+                  <div
+                    class="task-description"
+                    *ngFor="let item of tasks; let i = index"
+                    cdkDrag
+                  >
+                    {{ item.description }}
+                    <div class="btn">
+                      <button
+                        class="btn__delete"
+                        mat-icon-button
+                        (click)="deleteTask(i)"
+                      >
+                        <mat-icon>delete</mat-icon>
+                      </button>
+                      <button
+                        class="btn__edit"
+                        mat-icon-button
+                        (click)="onEdit(item, i)"
+                      >
+                        <mat-icon>edit</mat-icon>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="inProgress">
+                <h2 class="inProgress__title">
+                  In Progress<span *ngIf="inProgress.length > 0">
+                    - {{ inProgress.length }}</span
+                  >
+                </h2>
+
+                <div
+                  cdkDropList
+                  [cdkDropListData]="inProgress"
+                  class="inProgress__list"
+                  (cdkDropListDropped)="drop($event)"
+                >
+                  <div
+                    class="inProgress-description"
+                    *ngFor="let item of inProgress; let i = index"
+                    cdkDrag
+                  >
+                    {{ item.description }}
+                    <div class="btn">
+                      <button
+                        class="btn__delete"
+                        mat-icon-button
+                        (click)="deleteInProgessTask(i)"
+                      >
+                        <mat-icon>delete</mat-icon>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="done">
+                <h2 class="done__title">
+                  Done<span *ngIf="done.length > 0"> - {{ done.length }}</span>
+                </h2>
+
+                <div
+                  cdkDropList
+                  [cdkDropListData]="done"
+                  class="done__list"
+                  (cdkDropListDropped)="drop($event)"
+                >
+                  <div
+                    class="done-description"
+                    *ngFor="let item of done; let i = index"
+                    cdkDrag
+                  >
+                    {{ item.description }}
+                    <div class="btn">
+                      <button
+                        class="btn__delete"
+                        mat-icon-button
+                        (click)="deleteDoneTask(i)"
+                      >
+                        <mat-icon>delete</mat-icon>
+                      </button>
+                      <button class="btn__check" mat-icon-button>
+                        <mat-icon>check_circle</mat-icon>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

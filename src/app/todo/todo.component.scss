@@ -1,0 +1,139 @@
+$background-toDo-buttons-delete-add-update: #b10c43;
+$background-color-inProgres: #021b2b;
+$background-color-done-buttonEdit-buttonCheck: #02031a;
+$color-font-buttons-and-h2: #ebdfcc;
+$border-shadow: 0 0 0.5em #808080;
+$background-form-and-drag-drog: #fff;
+$border-drag-drog: solid 0.5px #ccc;
+
+.col-md-3 {
+  padding: 10px;
+  height: 100%;
+}
+.col-md-9 {
+  padding: 20px;
+}
+
+:host .mat-form-field {
+  width: 100%;
+}
+
+.mat-card {
+  .mat-raised-button {
+    background: $background-toDo-buttons-delete-add-update;
+    color: $color-font-buttons-and-h2;
+  }
+}
+
+.tasks {
+  width: 400px;
+  max-width: 100%;
+  display: inline-block;
+  vertical-align: top;
+  &__title {
+    text-align: center;
+    background-color: $background-toDo-buttons-delete-add-update;
+    color: $color-font-buttons-and-h2;
+    border-radius: 0.1em;
+    text-transform: uppercase;
+    box-shadow: $border-shadow;
+  }
+  &__list {
+    box-shadow: $border-shadow;
+    min-height: 60px;
+    background: $background-form-and-drag-drog;
+    border-radius: 0.1em;
+    overflow: hidden;
+    display: block;
+  }
+}
+
+.task-description,
+.inProgress-description,
+.done-description {
+  width: 100%;
+  padding: 10px;
+  border-bottom: $border-drag-drog;
+  color: $background-color-done-buttonEdit-buttonCheck;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  cursor: move;
+  background: $background-form-and-drag-drog;
+  font-size: 18px;
+}
+
+.btn {
+  border: none;
+  &__delete {
+    color: $background-toDo-buttons-delete-add-update;
+  }
+  &__edit {
+    color: $background-color-done-buttonEdit-buttonCheck;
+  }
+  &__check {
+    color: $background-color-done-buttonEdit-buttonCheck;
+  }
+}
+
+.inProgress {
+  width: 400px;
+  max-width: 100%;
+  display: inline-block;
+  vertical-align: top;
+  &__title {
+    text-align: center;
+    background-color: $background-color-inProgres;
+    color: $color-font-buttons-and-h2;
+    border-radius: 0.1em;
+    text-transform: uppercase;
+    box-shadow: $border-shadow;
+  }
+  &__list {
+    box-shadow: $border-shadow;
+    min-height: 60px;
+    background: $background-form-and-drag-drog;
+    border-radius: 0.1em;
+    overflow: hidden;
+    display: block;
+  }
+}
+
+.done {
+  width: 400px;
+  max-width: 100%;
+  display: inline-block;
+  vertical-align: top;
+  &__title {
+    text-align: center;
+    background-color: $background-color-done-buttonEdit-buttonCheck;
+    color: $color-font-buttons-and-h2;
+    border-radius: 0.1em;
+    text-transform: uppercase;
+    box-shadow: $border-shadow;
+  }
+  &__list {
+    box-shadow: $border-shadow;
+    min-height: 60px;
+    background: $background-form-and-drag-drog;
+    border-radius: 0.1em;
+    overflow: hidden;
+    display: block;
+  }
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
